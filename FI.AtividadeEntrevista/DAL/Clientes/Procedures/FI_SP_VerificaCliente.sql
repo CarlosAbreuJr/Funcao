@@ -1,0 +1,9 @@
+﻿IF (OBJECT_ID('dbo.FI_SP_VerificaCliente') IS NOT NULL) DROP PROCEDURE dbo.FI_SP_VerificaCliente
+GO
+CREATE PROC FI_SP_VerificaCliente
+	@CPF varchar
+AS
+BEGIN
+	SELECT ID FROM CLIENTES WITH(NOLOCK) 
+	WHERE CPF = @CPF
+END

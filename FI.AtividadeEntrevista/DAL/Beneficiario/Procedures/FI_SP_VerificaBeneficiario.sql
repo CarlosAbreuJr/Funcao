@@ -1,0 +1,11 @@
+﻿IF (OBJECT_ID('dbo.FI_SP_VerificaBeneficiario') IS NOT NULL) DROP PROCEDURE dbo.FI_SP_VerificaBeneficiario
+GO
+CREATE PROC FI_SP_VerificaBeneficiario
+	@CPF varchar,
+	@IDCLIENTE bigint
+AS
+BEGIN
+   SELECT ID from BENEFICIARIOS WITH(NOLOCK) WHERE CPF = @CPF AND IDCLIENTE=@IDCLIENTE
+END
+
+
