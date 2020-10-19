@@ -21,3 +21,8 @@ D:\Estudos\Funcao\FI.WebAtividadeEntrevista\FI.AtividadeEntrevista\bin\Debug\FI.
 D:\Estudos\Funcao\FI.WebAtividadeEntrevista\FI.AtividadeEntrevista\obj\Debug\FI.AtividadeEntrevista.csproj.CoreCompileInputs.cache
 D:\Estudos\Funcao\FI.WebAtividadeEntrevista\FI.AtividadeEntrevista\obj\Debug\FI.AtividadeEntrevista.dll
 D:\Estudos\Funcao\FI.WebAtividadeEntrevista\FI.AtividadeEntrevista\obj\Debug\FI.AtividadeEntrevista.pdb
+D:\Workspace-git\FI.AtividadeEntrevista\bin\Debug\FI.AtividadeEntrevista.dll
+D:\Workspace-git\FI.AtividadeEntrevista\bin\Debug\FI.AtividadeEntrevista.pdb
+D:\Workspace-git\FI.AtividadeEntrevista\obj\Debug\FI.AtividadeEntrevista.csproj.CoreCompileInputs.cache
+D:\Workspace-git\FI.AtividadeEntrevista\obj\Debug\FI.AtividadeEntrevista.dll
+D:\Workspace-git\FI.AtividadeEntrevista\obj\Debug\FI.AtividadeEntrevista.pdb

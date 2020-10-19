@@ -14,6 +14,9 @@ namespace WebAtividadeEntrevista
         /// <returns></returns>
         public static string RemoveNaoNumericos(string text)
         {
+            if (string.IsNullOrWhiteSpace(text))
+                return string.Empty;
+
             System.Text.RegularExpressions.Regex reg = new System.Text.RegularExpressions.Regex(@"[^0-9]");
             string ret = reg.Replace(text, string.Empty);
             return ret;

@@ -27,7 +27,7 @@ namespace WebAtividadeEntrevista.Controllers
         public JsonResult Incluir(ClienteModel model)
         {
             BoCliente bo = new BoCliente();
-
+            //model.CPF = Util.RemoveNaoNumericos(model.CPF);
             if (bo.VerificarExistencia(model.CPF))
             {
                 Response.StatusCode = 400;

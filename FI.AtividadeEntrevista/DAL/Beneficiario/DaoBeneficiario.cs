@@ -48,7 +48,7 @@ namespace FI.AtividadeEntrevista.DAL
             return beneficiario.FirstOrDefault();
         }
 
-        internal List<DML.Beneficiario> ConsultarByIdCliente(int idCliente)
+        internal List<DML.Beneficiario> ConsultarByIdCliente(long idCliente)
         {
             List<System.Data.SqlClient.SqlParameter> parametros = new List<System.Data.SqlClient.SqlParameter>();
 
@@ -60,22 +60,24 @@ namespace FI.AtividadeEntrevista.DAL
             return beneficiario;
         }
 
-        internal bool VerificarExistencia(string cpf, long idCliente)
+        internal bool VerificarExistencia(string cpf, long idCliente, long id)
         {
             List<System.Data.SqlClient.SqlParameter> parametros = new List<System.Data.SqlClient.SqlParameter>();
 
             parametros.Add(new System.Data.SqlClient.SqlParameter("CPF", cpf));
             parametros.Add(new System.Data.SqlClient.SqlParameter("IDCLIENTE", idCliente));
+            parametros.Add(new System.Data.SqlClient.SqlParameter("ID", id));
 
             DataSet ds = base.Consultar("FI_SP_VerificaBeneficiario", parametros);
 
             return ds.Tables[0].Rows.Count > 0;
         }
 
-        internal List<Beneficiario> Pesquisa(int iniciarEm, int quantidade, string campoOrdenacao, bool crescente, out int qtd)
+        internal List<Beneficiario> Pesquisa(long idCliente, int iniciarEm, int quantidade, string campoOrdenacao, bool crescente, out int qtd)
         {
             List<System.Data.SqlClient.SqlParameter> parametros = new List<System.Data.SqlClient.SqlParameter>();
 
+            parametros.Add(new System.Data.SqlClient.SqlParameter("IDCLIENTE", idCliente));
             parametros.Add(new System.Data.SqlClient.SqlParameter("iniciarEm", iniciarEm));
             parametros.Add(new System.Data.SqlClient.SqlParameter("quantidade", quantidade));
             parametros.Add(new System.Data.SqlClient.SqlParameter("campoOrdenacao", campoOrdenacao));
