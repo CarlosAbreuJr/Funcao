@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace WebAtividadeEntrevista
 {
@@ -12,7 +11,7 @@ namespace WebAtividadeEntrevista
                         "~/Scripts/jquery-{version}.js"));
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
-            
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -35,13 +34,15 @@ namespace WebAtividadeEntrevista
 
 
             bundles.Add(new ScriptBundle("~/bundles/beneficiarios").Include(
-                      "~/Scripts/Beneficiarios/FI.Beneficiarios.js"));
-            bundles.Add(new ScriptBundle("~/bundles/listBeneficiarios").Include(
-                      "~/Scripts/Beneficiarios/FI.ListBeneficiarios.js"));
+                      "~/Scripts/Beneficiarios/FI.Gravar.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/listBeneficiarios").Include(
+            //          "~/Scripts/Beneficiarios/FI.ListBeneficiarios.js"));
             bundles.Add(new ScriptBundle("~/bundles/altBeneficiarios").Include(
-                      "~/Scripts/Beneficiarios/FI.AltBeneficiarios.js"));
-            bundles.Add(new ScriptBundle("~/bundles/ExcBeneficiario").Include(
-                                  "~/Scripts/Beneficiarios/FI.ExcBeneficiario.js"));
+                      "~/Scripts/Beneficiarios/FI.Alterar.js"));
+            bundles.Add(new ScriptBundle("~/bundles/excBeneficiario").Include(
+                                  "~/Scripts/Beneficiarios/FI.Excluir.js"));
+            bundles.Add(new ScriptBundle("~/bundles/mascara").Include(
+                                              "~/Scripts/mascara.min.js"));
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

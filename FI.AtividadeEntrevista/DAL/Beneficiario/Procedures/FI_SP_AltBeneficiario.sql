@@ -3,15 +3,12 @@ GO
 CREATE PROC FI_SP_AltBeneficiario
 @NOME          VARCHAR (50) ,
 @Id           BIGINT,
-@CPF		   VARCHAR (15)--,
---@IDCLIENTE           BIGINT
-
+@CPF		   char (11)
 AS
 BEGIN
 	UPDATE BENEFICIARIOS 
 	SET 
 		NOME = @NOME, 
-		CPF = @CPF--,
-		--IDCLIENTE = @IDCLIENTE
+		CPF = @CPF
 	WHERE Id = @Id
 END

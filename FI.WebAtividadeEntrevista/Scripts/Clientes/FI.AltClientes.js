@@ -13,7 +13,7 @@ $(document).ready(function () {
         $('#formCadastro #CPF').val(obj.CPF);
 
     }
-
+ 
     $('#formCadastro').submit(function (e) {
         e.preventDefault();
 
@@ -47,16 +47,8 @@ $(document).ready(function () {
                 }
         });
     })
-
-    $(".detalhes").click(function () {
-        //var id = obj.Id;
-        var id = $(this).attr("data-id");
-        $("#modal").load("Beneficiario?Id=" + id, function () {
-            $("#modal").modal();
-        })
-    });
-
-    $('.VisualizarSolucao').click(function () { // class name selector
+    
+    $('.modal-beneficiario').click(function () { // class name selector
         var url = $(this).data('url'); // use data(), not attr()
         $("#modal").load(url, function () {
             $("#modal").modal();

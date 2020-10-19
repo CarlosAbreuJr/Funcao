@@ -56,7 +56,7 @@ namespace FI.AtividadeEntrevista.BLL
         /// </summary>
         /// <param name="id">id do beneficiario</param>
         /// <returns></returns>
-        public List<DML.Beneficiario> ConsultarPorCliente(int idcliente)
+        public List<DML.Beneficiario> ConsultarPorCliente(long idcliente)
         {
             DAL.DaoBeneficiario benef = new DAL.DaoBeneficiario();
             return benef.ConsultarByIdCliente(idcliente);
@@ -72,24 +72,24 @@ namespace FI.AtividadeEntrevista.BLL
         //    return benef.Listar();
         //}
 
-        ///// <summary>
-        ///// Lista os beneficiarios
-        ///// </summary>
-        //public List<DML.Beneficiario> Pesquisa(int iniciarEm, int quantidade, string campoOrdenacao, bool crescente, out int qtd)
-        //{
-        //    DAL.DaoBeneficiario benef = new DAL.DaoBeneficiario();
-        //    return benef.Pesquisa(iniciarEm, quantidade, campoOrdenacao, crescente, out qtd);
-        //}
+        /// <summary>
+        /// Lista os beneficiarios
+        /// </summary>
+        public List<DML.Beneficiario> Pesquisa(long idCliente, int iniciarEm, int quantidade, string campoOrdenacao, bool crescente, out int qtd)
+        {
+            DAL.DaoBeneficiario benef = new DAL.DaoBeneficiario();
+            return benef.Pesquisa(idCliente, iniciarEm, quantidade, campoOrdenacao, crescente, out qtd);
+        }
 
         /// <summary>
         /// VerificaExistencia
         /// </summary>
         /// <param name="cpf"></param>
         /// <returns></returns>
-        public bool VerificarExistencia(string cpf, long idCliente)
+        public bool VerificarExistencia(string cpf, long idCliente, long id)
         {
             DAL.DaoBeneficiario benef = new DAL.DaoBeneficiario();
-            return benef.VerificarExistencia(cpf, idCliente);
+            return benef.VerificarExistencia(cpf, idCliente, id);
         }
     }
 }

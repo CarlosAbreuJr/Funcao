@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WebAtividadeEntrevista.Models
 {
@@ -11,6 +7,8 @@ namespace WebAtividadeEntrevista.Models
     /// </summary>
     public class BeneficiarioModel
     {
+        private string cpf;
+
         public long Id { get; set; }
 
         /// <summary>
@@ -22,13 +20,16 @@ namespace WebAtividadeEntrevista.Models
         /// <summary>
         /// CPF
         /// </summary>
-        [Required(ErrorMessage ="CPF obrigatório")]
-        //✓ Deverá consistir se o dado informado é um CPF válido(conforme o cálculo padrão de verificação do dígito verificador de CPF)
-        //✓ Não permitir o cadastramento de um CPF já existente no banco de dados, ou seja, não é permitida a existência de um CPF duplicad 
+        [Required(ErrorMessage = "CPF obrigatório")]
         [RegularExpression(@"^[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}$", ErrorMessage = "Digite um CPF válido")]
-        public string CPF { get; set; }
+        [WebAtividadeEntrevista.ValidationAttributeCPF(ErrorMessage = "CPF inválido")]
+        public string CPF
+        {
+            get { return Util.RemoveNaoNumericos(cpf); }
+            set { cpf = value; }
+        }
 
-        [Required(ErrorMessage ="Informe o cliente que o beneficiário compoe")]
+        [Required(ErrorMessage = "Informe o cliente que o beneficiário compoe")]
         public long IdCliente { get; set; }
 
     }

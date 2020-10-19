@@ -11,6 +11,8 @@ namespace WebAtividadeEntrevista.Models
     /// </summary>
     public class ClienteModel
     {
+        private string cpf;
+
         public long Id { get; set; }
 
         /// <summary>
@@ -73,6 +75,10 @@ namespace WebAtividadeEntrevista.Models
         [Required(ErrorMessage ="CPF obrigatório")]
         [WebAtividadeEntrevista.ValidationAttributeCPF(ErrorMessage ="CPF inválido")]
         [RegularExpression(@"^[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}$", ErrorMessage = "Digite um CPF válido")]
-        public string CPF { get; set; }
+        public string CPF
+        {
+            get { return Util.RemoveNaoNumericos(cpf); }
+            set { cpf = value; }
+        }
     }
 }

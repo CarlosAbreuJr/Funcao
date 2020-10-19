@@ -3,7 +3,7 @@
 Print 'Não encontrei uso para esta procedure'
 GO
 CREATE PROC FI_SP_IncCliente
-	@CPF           VARCHAR (11),
+	@CPF           CHAR (11),
     @NOME          VARCHAR (50) ,
     @SOBRENOME     VARCHAR (255),
     @NACIONALIDADE VARCHAR (50) ,

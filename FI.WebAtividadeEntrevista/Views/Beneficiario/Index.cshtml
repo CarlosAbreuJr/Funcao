@@ -13,19 +13,18 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="CPF">CPF:</label>
-                            <input required="required" type="text" class="form-control" id="CPFBeneficiario" name="CPFBeneficiario" placeholder="Ex.: 999.999.999-99" maxlength="14">
+                            <input required="required" type="text" class="form-control cpf-beneficiario" placeholder="999.999.999-99" onkeyup="mascara('###.###.###-##',this,event,true)" id="CPF" name="CPF" maxlength="14">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="Nome">Nome:</label>
-                            <input required="required" type="text" class="form-control" id="NomeBeneficiario" name="NomeBeneficiario" placeholder="Ex.: João XI" maxlength="50">
+                            <input required="required" type="text" class="form-control  nome-beneficiario" id="Nome" name="Nome" placeholder="Ex.: João XI" maxlength="50">
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        @*<div class="form-group">*@
-                            <button type="button" id="btnGravar" class="btn btn-sm btn-success gravar">Incluir</button>
-                        @*</div>*@
+                    <div class="col-md-4 ui-button">
+
+                        <button type="button" class="btn btn-sm btn-success gravar-beneficiario" onclick="gravarBeneficiario()">Incluir</button>
                     </div>
                 </div>
             </form>
@@ -41,24 +40,25 @@
                     @foreach (var item in Model)
                     {
                         <tr id=@item.Id>
-                            <td>
+                            <td width="20%">
                                 @Html.HiddenFor(modelItem => item.Id)
                                 @Html.HiddenFor(modelItem => item.IdCliente)
                                 @Html.DisplayFor(modelItem => item.CPF)
                             </td>
-                            <td>
+                            <td width="50%">
                                 @Html.DisplayFor(modelItem => item.Nome)
                             </td>
-                            <td>
+                            <td width="30%">
                                 <button type="button"
-                                        class="btn btn-primary alterar"
+                                        class="btn btn-primary" @*alterar-beneficiario*@
+                                        onclick="alterarBeneficiario('@item.Id', '@item.Nome','@item.CPF','@item.IdCliente')"
                                         data-id="@item.Id"
                                         data-name="@item.Nome"
                                         data-cpf="@item.CPF"
                                         data-idcliente="@item.IdCliente">
                                     Alterar
                                 </button>
-                                <button type="button" class="btn btn-primary delete" data-id="@item.Id">
+                                <button type="button" class="btn btn-primary deletar-beneficiario" onclick="deletarBeneficiario('@item.Id')" data-id="@item.Id">
                                     Excluir
                                 </button>
                             </td>
@@ -74,60 +74,18 @@
 </div>
 @section scripts{
     <script>
-        $(function () {
-            $(".alterar").click(function () {
-                var id = $(this).attr("data-id");
-                var nome = $(this).attr("data-name");
-                var cpf = $(this).attr("data-cpf");
-                //alert(id);
-                $('#formCadBeneficiario #Nome').val(nome);
-                $('#formCadBeneficiario #CPF').val(cpf);
-            });
+        var urlExcluirBenef = '@Url.Action("Excluir", "Beneficiario", new { area = "" })';
+        var urlAlterarBenef = '@Url.Action("Alterar", "Beneficiario", new { area = "" })';
+        var urlIncluirBenef = '@Url.Action("Incluir", "Beneficiario", new { area = "" })';
 
-            $(".delete").click(function () {
-                var id = $(this).attr("data-id");
-                //$('#formCadBeneficiario #Nome').val(id);
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("Excluir")',
-                    data: { id: id },
-                    dataType: "json",
-                    success: function () {
-                        alert("Beneficiário removido com sucesso, recarregue sua tela");
-                    },
-                    error: function () {
-                        alert("Erro ao deletar beneficiário");
-                    }
-                });
-            });
+     //var urlBeneficiarioList = '@Url.Action("BeneficiarioList", "Beneficiario", new { area = "" })';
 
-            $('#btnGravar').click(function (e) {
-                var idClente = obj.Id;
-                $.ajax({
-                    url: '@Url.Action("Incluir")',
-                    method: "POST",
-                    data: {
-                        "NOME": $("#NomeBeneficiario").val(),//(this).find
-                        "CPF": $("#CPFBeneficiario").val(),
-                        "IdCliente": idClente,
-                    },
-                    dataType: "json",
-                    success: function (data) {
-                        var idBen = data.Id;
-                        var NomeBen = data.Nome;
-                        var CPFBen = data.CPF;
 
-                        $('#gridBeneficiarios').append("<tr><td>" + idBen + "</td><td>" + NomeBen + "</td><td><button type=\"button\" class=\"btn btn-primary alterar\" data-id=\"" + idBen + "\" data-name=" + NomeBen +
-                            " data-cpf=\"" + CPFBen + " data-idcliente=\"" + idBen + "\">Alterar</button><button type=\"button\" class=\"btn btn-primary delete\" data-id=\"" + idBen + "\">Excluir</button></td></tr>");
-                        return false;
-                    },
-
-                    error: function () {
-                        alert("Erro ao cadastrar beneficiário");
-                    }
-
-                });
-            });
-        });
     </script>
+    @Scripts.Render("~/bundles/beneficiarios")
+    @Scripts.Render("~/bundles/ExcBeneficiario")
+    @Scripts.Render("~/bundles/altBeneficiarios")
+    
+    @*@Scripts.Render("~/bundles/listBeneficiarios")*@
+
 }

@@ -7,6 +7,7 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/jtable")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/mascara")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -23,7 +24,6 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Clientes", "Index", "Cliente", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Beneficiarios", "Index", "Beneficiario", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
                 </ul>
             </div>
